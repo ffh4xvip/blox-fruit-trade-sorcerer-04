@@ -12,7 +12,9 @@ interface FruitsResponse {
 }
 
 const fetchFruits = async (): Promise<FruitData[]> => {
-  const response = await fetch('/fruits.json');
+  // Get the base URL from the current page location
+  const baseUrl = import.meta.env.BASE_URL;
+  const response = await fetch(`${baseUrl}fruits.json`);
   if (!response.ok) {
     throw new Error('Failed to fetch fruits data');
   }
