@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // Use relative path to support any subdirectory
+  base: process.env.WORDPRESS ? './' : '/blx-calc/',
   server: {
     host: "::",
     port: 8080,
