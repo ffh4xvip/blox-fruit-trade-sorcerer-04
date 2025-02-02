@@ -12,7 +12,10 @@ interface FruitsResponse {
 }
 
 const fetchFruits = async (): Promise<FruitData[]> => {
-  const response = await fetch('/fruits.json');
+  // Get base URL from WordPress if available, otherwise use Vite's base URL
+  const baseUrl = window.wpData?.baseUrl || import.meta.env.BASE_URL;
+  
+  const response = await fetch(`${baseUrl}fruits.json`);
   if (!response.ok) {
     throw new Error('Failed to fetch fruits data');
   }
